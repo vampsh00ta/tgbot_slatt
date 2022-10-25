@@ -23,18 +23,6 @@ class Markup(object):
         return markup
 
 
-def menu(message):
-    if message.chat.type == 'private':
-        if message.text == 'Меню':
-            keyboard = types.InlineKeyboardMarkup()
-            profile = types.InlineKeyboardButton(f'Профиль', callback_data='profile')
-            items = types.InlineKeyboardButton(f'Товары', callback_data='items')
-
-            keyboard.add(profile)
-            keyboard.add(items)
-
-            bot.send_message(message.chat.id, text='Выберите', parse_mode='html', reply_markup=keyboard)
-
 
 
 
@@ -51,9 +39,10 @@ def menu(message):
     keyboard = types.InlineKeyboardMarkup()
     profile = types.InlineKeyboardButton(f'Профиль', callback_data='profile')
     items = types.InlineKeyboardButton(f'Товары', callback_data='items')
-
+    orders = types.InlineKeyboardButton(f'Мои покупки', callback_data='orders')
     keyboard.add(profile)
     keyboard.add(items)
+    keyboard.add(orders)
 
     bot.send_message(message.chat.id, text='Выберите', parse_mode='html', reply_markup=keyboard)
 
